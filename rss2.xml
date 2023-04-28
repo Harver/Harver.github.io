@@ -9,8 +9,41 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>随遇而安</description>
-    <pubDate>Thu, 27 Apr 2023 10:14:49 GMT</pubDate>
+    <pubDate>Fri, 28 Apr 2023 06:15:15 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>如何用VSCODE写一篇博客?</title>
+      <link>http://example.com/2023/04/28/How-to-use-vscode-to-write-a-hexo-blog/</link>
+      <guid>http://example.com/2023/04/28/How-to-use-vscode-to-write-a-hexo-blog/</guid>
+      <pubDate>Fri, 28 Apr 2023 05:58:04 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;使用VS Code写Hexo博客是一件很简单的事情。这里我会详细介绍步骤并提供示例:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;安装VS Code和Hexo插件。在VS Code中搜索安装插件Hexo Snippets和Markdown All in One。&lt;/li&gt;
+&lt;li&gt;初始化He</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>使用VS Code写Hexo博客是一件很简单的事情。这里我会详细介绍步骤并提供示例:</p><ol><li>安装VS Code和Hexo插件。在VS Code中搜索安装插件Hexo Snippets和Markdown All in One。</li><li>初始化Hexo博客。在你希望的文件夹下打开VS Code,按快捷键Ctrl+P输入命令:hexo init,按回车,Hexo即会在该文件夹下初始化博客结构。</li><li>新建文章草稿。VS Code左侧找到文章素材文件夹source&#x2F;_posts,右键选择新建文件,输入文章名称比如如何用VSCODE写一篇博客.md。</li><li>编写文章内容。在如何用VSCODE写一篇博客.md中编写文章内容,文件开头的YAML部分设置文章标题、日期、分类等信息。内容部分则采用Markdown语法。<br>示例:<br>title: 我的第一篇博客<br>date: 2019-03-25<br>categories: [工具,办公]<br>这是我的第一篇Hexo博客文章…</li><li>文章发布。按快捷键Ctrl+P输入命令:hexo g ,生成静态网站文件。再输入命令:hexo d ,将网站文件部署发布到GitHub上。 </li><li>添加分类和标签。在source文件夹下新建categories和tags文件夹,在文章YAML头部添加categories和tags属性。Hexo会自动生成分类和标签页。<br>示例:<br>title: 我的第一篇博客<br>date: 2019-03-25<br>categories: [博客, 杂记]<br>tags: [Hexo, 个人博客]<br>这样一篇文章可以归属于”博客”和”杂记”两个分类,同时打上”Hexo”和”个人博客”两个标签。</li><li>主题安装与配置。在VS Code中打开站点配置文件_config.yml,将theme设置为您下载的主题名称,并根据主题说明进行配置。</li><li>预览和部署。输入命令:hexo s 进行本地预览,输入 hexo d 将最终生成的网站部署发布。</li></ol>]]></content:encoded>
+      
+      
+      <category domain="http://example.com/categories/%E5%8D%9A%E5%AE%A2/">博客</category>
+      
+      <category domain="http://example.com/categories/%E5%8D%9A%E5%AE%A2/%E6%9D%82%E8%AE%B0/">杂记</category>
+      
+      
+      <category domain="http://example.com/tags/Hexo/">Hexo</category>
+      
+      <category domain="http://example.com/tags/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">个人博客</category>
+      
+      
+      <comments>http://example.com/2023/04/28/How-to-use-vscode-to-write-a-hexo-blog/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>Hello World</title>
