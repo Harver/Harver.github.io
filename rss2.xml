@@ -9,7 +9,7 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>随遇而安</description>
-    <pubDate>Sat, 29 Apr 2023 15:39:06 GMT</pubDate>
+    <pubDate>Sat, 29 Apr 2023 15:52:13 GMT</pubDate>
     <generator>http://hexo.io/</generator>
     
     <item>
@@ -20,14 +20,12 @@
       
         
         
-      <description>&lt;iframe width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;https://www.youtube.com/watch?v=d0yGdNEWdn0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;
-
-&lt;p&gt;How to le</description>
+      <description>&lt;iframe width=&quot;973&quot; height=&quot;547&quot; src=&quot;https://www.youtube.com/embed/d0yGdNEWdn0&quot; title=&quot;如何在六个月内掌握一门外语 | 克利斯•伦戴尔 | TEDxLingnanUniversity&quot; fra</description>
         
       
       
       
-      <content:encoded><![CDATA[<iframe width="100%" height="100%" src="https://www.youtube.com/watch?v=d0yGdNEWdn0" frameborder="0" allowfullscreen></iframe><p>How to learn any language in six months<br>Principle # 1: Focus on language content that is relevant to you<br>Principle # 2: Use your new language as a tool to communicate from day 1<br>Principle # 3: When you first understand the message you will unconsciously acquire the language<br>Principle # 4: Physiological training<br>Principle # 5: Psycho-physiological state matters<br>Action # 1: Listen a lot (brain soaking)<br>Action # 2: Focus on getting the meaning first (before the words)<br>Action # 3: Start mixing<br>Action # 4: Focus on the core<br>Action # 5: Get a language parent<br>Action # 6: Copy the face<br>Action # 7: “Direct connect” to mental images</p>]]></content:encoded>
+      <content:encoded><![CDATA[<iframe width="973" height="547" src="https://www.youtube.com/embed/d0yGdNEWdn0" title="如何在六个月内掌握一门外语 | 克利斯•伦戴尔 | TEDxLingnanUniversity" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>How to learn any language in six months<br>Principle # 1: Focus on language content that is relevant to you<br>Principle # 2: Use your new language as a tool to communicate from day 1<br>Principle # 3: When you first understand the message you will unconsciously acquire the language<br>Principle # 4: Physiological training<br>Principle # 5: Psycho-physiological state matters<br>Action # 1: Listen a lot (brain soaking)<br>Action # 2: Focus on getting the meaning first (before the words)<br>Action # 3: Start mixing<br>Action # 4: Focus on the core<br>Action # 5: Get a language parent<br>Action # 6: Copy the face<br>Action # 7: “Direct connect” to mental images</p>]]></content:encoded>
       
       
       <category domain="http://example.com/categories/%E6%96%B9%E6%B3%95/">方法</category>
