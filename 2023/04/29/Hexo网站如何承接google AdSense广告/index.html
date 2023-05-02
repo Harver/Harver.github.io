@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Hexo网站如何承接google AdSense广告 如下图。在侧边栏下部应该可以看到 AdSense 推送的广告，如果看不到，查看浏览器是否安装了 AdBlock 等广告屏蔽插件，请暂时关闭这些插件。  image 123456&#x2F;&#x2F; 系统- Next Theme&#x2F;&#x2F; 在 hexo 目录下, 输入 “hexo version” 可以查看 Next 及依赖的版本- hexo: 3.8.0- hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的联盟营销旅程">
+<meta property="og:url" content="http://example.com/2023/04/29/Hexo%E7%BD%91%E7%AB%99%E5%A6%82%E4%BD%95%E6%89%BF%E6%8E%A5google%20AdSense%E5%B9%BF%E5%91%8A/index.html">
+<meta property="og:site_name" content="小子有出息">
+<meta property="og:description" content="Hexo网站如何承接google AdSense广告 如下图。在侧边栏下部应该可以看到 AdSense 推送的广告，如果看不到，查看浏览器是否安装了 AdBlock 等广告屏蔽插件，请暂时关闭这些插件。  image 123456&#x2F;&#x2F; 系统- Next Theme&#x2F;&#x2F; 在 hexo 目录下, 输入 “hexo version” 可以查看 Next 及依赖的版本- hexo: 3.8.0- hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9739182-bca58724d5806eaf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9739182-ea30b97860dfbfe6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/655/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9739182-ff217a306bd4a3e5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9739182-f6d9297abcc16d03.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+<meta property="article:published_time" content="2023-04-29T14:59:51.000Z">
+<meta property="article:modified_time" content="2023-05-02T15:22:48.515Z">
+<meta property="article:author" content="小子有出息">
+<meta property="article:tag" content="学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9739182-bca58724d5806eaf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp">
+
+<link rel="canonical" href="http://example.com/2023/04/29/Hexo%E7%BD%91%E7%AB%99%E5%A6%82%E4%BD%95%E6%89%BF%E6%8E%A5google%20AdSense%E5%B9%BF%E5%91%8A/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>我的联盟营销旅程 | 小子有出息</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="小子有出息" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小子有出息</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-book fa-fw"></i>资源</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/29/Hexo%E7%BD%91%E7%AB%99%E5%A6%82%E4%BD%95%E6%89%BF%E6%8E%A5google%20AdSense%E5%B9%BF%E5%91%8A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="小子有出息">
+      <meta itemprop="description" content="随遇而安">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小子有出息">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我的联盟营销旅程
+        </h1>
+
+        <div class="post-meta">
+
+	    
+  		<i class="fa fa-thumb-tack"></i>
+  		<font color=7D26CD>置顶</font>
+  		<span class="post-meta-divider">|</span>
+	    
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-04-29 22:59:51" itemprop="dateCreated datePublished" datetime="2023-04-29T22:59:51+08:00">2023-04-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-05-02 23:22:48" itemprop="dateModified" datetime="2023-05-02T23:22:48+08:00">2023-05-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%B9%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">方法</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Hexo网站如何承接google AdSense广告</p>
+<p>如下图。在侧边栏下部应该可以看到 AdSense 推送的广告，如果看不到，查看浏览器是否安装了 AdBlock 等广告屏蔽插件，请暂时关闭这些插件。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9739182-bca58724d5806eaf.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>image</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 系统</span><br><span class="line">- Next Theme</span><br><span class="line">// 在 hexo 目录下, 输入 “hexo version” 可以查看 Next 及依赖的版本</span><br><span class="line">- hexo: 3.8.0</span><br><span class="line">- hexo-cli: 1.1.0</span><br><span class="line">- ...</span><br></pre></td></tr></table></figure>
+
+<h1 id="广告联盟选择"><a href="#广告联盟选择" class="headerlink" title="广告联盟选择"></a>广告联盟选择</h1><p>在国内，比较知名的广告联盟都要求网站备案，比如<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://union.baidu.com/customerLogin.html">百度广告联盟</a>，否则无法承接广告，而自己的小网站暂时没有备案，所以只能选择国外的广告联盟。</p>
+<p>国外的广告联盟，毫无疑问会选择 Google AdSense，申请门槛相对较低。网站一般运营几个月，有十几篇文章，是比较容易通过审核的。并且，AdSense 的广告相比百度联盟的还是比较优质的，所以最后选择 google AdSense 联盟。</p>
+<h1 id="注册-AdSense-账号"><a href="#注册-AdSense-账号" class="headerlink" title="注册 AdSense 账号"></a>注册 AdSense 账号</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://www.google.com/adsense/start/%23">注册网站</a> 搬梯子登录</li>
+<li>点击右上角 Get started 进行注册；如有 google 账号，可以直接点击 sign in 进行登录。</li>
+</ul>
+<p>[图片上传失败…(image-15750e-1582364577490)]</p>
+<ul>
+<li>填写完信息之后，页面会生成一段代码，要求你放置到你的网站的<head>标记中。注意，当审核通过后，这一段代码在开启“自动广告”后，会自动推送广告。<ul>
+<li>针对 Next Theme，可以复制代码到 themes\next\layout_partials\head.swig 中任意一个script块下。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- layout example in head.swig --&gt;</span></span><br><span class="line">&#123;% if theme.google_site_verification %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;google-site-verification&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; theme.google_site_verification &#125;&#125;&quot;</span> /&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">data-ad-client</span>=<span class="string">&quot;ca-pub-612**56&quot;</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% if theme.bing_site_verification %&#125;</span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;msvalidate.01&quot;</span> <span class="attr">content</span>=<span class="string">&quot;&#123;&#123; theme.bing_site_verification &#125;&#125;&quot;</span> /&gt;</span></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在你添加完成之后，在 google AdSense 上点击确认，谷歌会到你的网站上进行核查和验收。</li>
+<li>博主是2020.02.05上午申请，2020.02.06上午收到申请通过的邮件。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9739182-ea30b97860dfbfe6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/655/format/webp" alt="img"></p>
+<p>image</p>
+<h1 id="配置广告位"><a href="#配置广告位" class="headerlink" title="配置广告位"></a>配置广告位</h1><p>在收到审核通过的邮件后，可以登录 google AdSense 在自己的网站上进行广告位置的筛选和设计了，目前 google AdSense 主要提供了自动广告和广告单元两种形式的广告添加方式。</p>
+<h2 id="自动广告"><a href="#自动广告" class="headerlink" title="自动广告"></a>自动广告</h2><p>自动广告是 google AdSense 近来提供的一种广告形式，它能够通过分析你的博客布局结构，自定义的在你的网站中插入合适的广告，无论是内容，还是广告尺寸，都是完全契合网站内容本身的，算是一种比较高质量的广告。</p>
+<p>打开 AdSense 首页，然后转到广告。您可以在概览中为各个网站设置自动广告。</p>
+<p>如果您的网站已经启用自动广告，在审核通过的几个小时内，您便会在网站上看到相关的广告，并开始累积收入(之前插入的检验代码，接入了 google AdSense 的自动广告)。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9739182-ff217a306bd4a3e5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>image</p>
+<p>这种广告投放的几率比较小，在PC端效率比较低，如果你的网站支持移动端查看的话，会自动投放移动端自适应的广告。</p>
+<h2 id="广告单元"><a href="#广告单元" class="headerlink" title="广告单元"></a>广告单元</h2><p>为了能够最高效的利用自己博客的广告位，AdSense提供了三种固定广告位。</p>
+<ul>
+<li>文字广告和展示广告(即侧边栏，评论区之类的固定广告位)</li>
+<li>信息流广告(插入在信息流内容的广告位置)</li>
+<li>文章内嵌广告(主要是插入在每篇文章内部的开始，中间，结尾部分，展示次数比较多，强烈推荐)</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9739182-f6d9297abcc16d03.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>image</p>
+<p>由于本人的是博客网站，所以第二种信息流广告没有投入使用，第三种影响阅读体验，所以博主现在主要采用第一种方式，在侧边栏展示广告。</p>
+<p>具体的操作流程是，在网站上，选择广告单元-&gt;新建广告位-&gt;选择对应的广告类型-&gt;生成对应的广告代码。</p>
+<h3 id="广告单元插入"><a href="#广告单元插入" class="headerlink" title="广告单元插入"></a>广告单元插入</h3><p>博主启用了自动广告，广告单元仅使用了第一种方式，在网站的侧边栏和评论区展示广告，但下面会提供几种针对 Hexo 的 Next Theme 广告单元代码位置的插入。</p>
+<h4 id="插入评论区"><a href="#插入评论区" class="headerlink" title="插入评论区"></a>插入评论区</h4><p>将广告单元生成的广告代码插入 \themes\next\layout_partials\comments.swig 中的末尾即可。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% elseif theme.valine.appid and theme.valine.appkey %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;comments&quot;</span> <span class="attr">id</span>=<span class="string">&quot;comments&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Insert google ad blocks --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Comment_Below --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ins</span> <span class="attr">class</span>=<span class="string">&quot;adsbygoogle&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">style</span>=<span class="string">&quot;display:block&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-ad-client</span>=<span class="string">&quot;ca-pub-61***56&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-ad-slot</span>=<span class="string">&quot;83***73&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-ad-format</span>=<span class="string">&quot;auto&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-full-width-responsive</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     (adsbygoogle = <span class="variable language_">window</span>.<span class="property">adsbygoogle</span> || []).<span class="title function_">push</span>(&#123;&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="插入侧边栏"><a href="#插入侧边栏" class="headerlink" title="插入侧边栏"></a>插入侧边栏</h4><p>将代码插入\themes\next\layout_macro\sidebar.swig 文件中<div class=”sidebar-inner”> </div>的最下侧。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">      &#123;% if theme.sidebar.b2t %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;back-to-top&quot;</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">&quot;fa fa-arrow-up&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">          &#123;% if theme.sidebar.scrollpercent %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;scrollpercent&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>0<span class="tag">&lt;/<span class="name">span</span>&gt;</span>%<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">          &#123;% endif %&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      &#123;% endif %&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Insert google ad blocks --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">&quot;https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Comment_Below --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ins</span> <span class="attr">class</span>=<span class="string">&quot;adsbygoogle&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">style</span>=<span class="string">&quot;display:block&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-ad-client</span>=<span class="string">&quot;ca-pub-6129496365361356&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-ad-slot</span>=<span class="string">&quot;8323610673&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-ad-format</span>=<span class="string">&quot;auto&quot;</span></span></span><br><span class="line"><span class="tag">     <span class="attr">data-full-width-responsive</span>=<span class="string">&quot;true&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">     (adsbygoogle = <span class="variable language_">window</span>.<span class="property">adsbygoogle</span> || []).<span class="title function_">push</span>(&#123;&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">&#123;% endmacro %&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="插入文章头部"><a href="#插入文章头部" class="headerlink" title="插入文章头部"></a>插入文章头部</h4><p>在\themes\next\layout_custom\ 目录下，新建 google_adsense.swig，并将 AdSense 提供的广告代码放入其中，然后将</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include &#x27;../_custom/google_adsense.swig&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>插入到 \themes\next\layout_macro\post.swig  文件中。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">        &#123;% else %&#125;</span><br><span class="line">          &#123;% if post.type === &#x27;picture&#x27; %&#125;</span><br><span class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123; url_for(post.path) &#125;&#125;&quot;</span>&gt;</span>&#123;&#123; post.content &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">          &#123;% else %&#125;</span><br><span class="line">            &#123;&#123; post.content &#125;&#125;</span><br><span class="line">          &#123;% endif %&#125;</span><br><span class="line">        &#123;% endif %&#125;</span><br><span class="line">      &#123;% else %&#125;</span><br><span class="line"><span class="comment">&lt;!-- Insert google ad blocks --&gt;</span></span><br><span class="line">        &#123;% include &#x27;../_custom/google_adsense.swig&#x27; %&#125;</span><br><span class="line"></span><br><span class="line">        &#123;&#123; post.content &#125;&#125;</span><br><span class="line">      &#123;% endif  %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    &#123;#####################&#125;</span><br><span class="line">    &#123;### END POST BODY ###&#125;</span><br><span class="line">    &#123;#####################&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>我不建议在一个网页中布置多个广告，广告内容雷同，会严重影响用户阅读体验。在页面的侧边布置一个广告，难道不香吗？</strong></p>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>在成功接入 AdSense 后，google 会根据几种方式和数据判断广告点击是否作弊，从而注销你的账号，所以不要心存侥幸心理，好好发原创文章，提高网站的质量才是王道。</p>
+<ul>
+<li>作弊广告点击者的IP地址与你Adsense账户登录IP地址相同</li>
+<li>作弊广告点击的CTR数据太高</li>
+<li>作弊广告点击者的IP地址来自同一个地理区域</li>
+<li>根据Cookies判断作弊Adsense广告点击</li>
+<li>作弊广告点击者页面停留时间太短</li>
+<li>直接访问者的广告点击率过高</li>
+<li>流量小但广告点击率高</li>
+<li>在网页上用文字提示请求鼓动点击广告</li>
+</ul>
+<h1 id="Last-but-not-least"><a href="#Last-but-not-least" class="headerlink" title="Last but not least"></a>Last but not least</h1><p>现在通过 AdSense 能赚到的收入本身并不高，尤其是博客类的网站更是如此，但在有空余的地方放置一点广告还是能起到丰富博客的作用。</p>
+<p>既然大家愿意花时间和精力去搭建个人博客，除了钱以外，肯定还有其他的目的，希望大家不忘初心，更不要舍本逐末，忘记了自己搭建博客的初衷，毕竟广告收入这个事情，有当然好，没有也不用气馁，尽力就好～</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://www.darylliu.cn/archives/6a1f6623.html">hexo个人next主题博客接入谷歌广告</a></li>
+<li><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://juejin.im/post/5c95d230e51d45124e35cef6">hexo博客next主题添加google adsense(亲测可用)</a></li>
+<li><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://blog.csdn.net/stormdony/article/details/85608944">Hexo接入Google adsense广告</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小子有出息
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/04/29/Hexo%E7%BD%91%E7%AB%99%E5%A6%82%E4%BD%95%E6%89%BF%E6%8E%A5google%20AdSense%E5%B9%BF%E5%91%8A/" title="我的联盟营销旅程">http://example.com/2023/04/29/Hexo网站如何承接google AdSense广告/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag"># 学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/04/29/%E5%9C%A8Hexo%E5%8D%9A%E5%AE%A2%E9%87%8C,%E5%A6%82%E6%9E%9C%E5%8F%AA%E6%83%B3%E5%8F%91%E5%B8%83%E9%83%A8%E5%88%86%E6%96%87%E7%AB%A0,%E5%8F%AF%E4%BB%A5%E9%80%9A%E8%BF%87%E4%BB%A5%E4%B8%8B%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E5%AE%9E%E7%8E%B01/" rel="prev" title="我的联盟营销旅程">
+      <i class="fa fa-chevron-left"></i> 我的联盟营销旅程
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81ODQxMC8zNDg3Mw=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B9%BF%E5%91%8A%E8%81%94%E7%9B%9F%E9%80%89%E6%8B%A9"><span class="nav-number">1.</span> <span class="nav-text">广告联盟选择</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C-AdSense-%E8%B4%A6%E5%8F%B7"><span class="nav-number">2.</span> <span class="nav-text">注册 AdSense 账号</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%B9%BF%E5%91%8A%E4%BD%8D"><span class="nav-number">3.</span> <span class="nav-text">配置广告位</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%B9%BF%E5%91%8A"><span class="nav-number">3.1.</span> <span class="nav-text">自动广告</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%BF%E5%91%8A%E5%8D%95%E5%85%83"><span class="nav-number">3.2.</span> <span class="nav-text">广告单元</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E5%91%8A%E5%8D%95%E5%85%83%E6%8F%92%E5%85%A5"><span class="nav-number">3.2.1.</span> <span class="nav-text">广告单元插入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E8%AF%84%E8%AE%BA%E5%8C%BA"><span class="nav-number">3.2.1.1.</span> <span class="nav-text">插入评论区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E4%BE%A7%E8%BE%B9%E6%A0%8F"><span class="nav-number">3.2.1.2.</span> <span class="nav-text">插入侧边栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E6%96%87%E7%AB%A0%E5%A4%B4%E9%83%A8"><span class="nav-number">3.2.1.3.</span> <span class="nav-text">插入文章头部</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Last-but-not-least"><span class="nav-number">5.</span> <span class="nav-text">Last but not least</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">6.</span> <span class="nav-text">References</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小子有出息"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">小子有出息</p>
+  <div class="site-description" itemprop="description">随遇而安</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-04 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小子有出息</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">19k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">17 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共11.8k字</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
