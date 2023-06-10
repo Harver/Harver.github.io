@@ -9,8 +9,88 @@
     <atom:link href="http://example.com/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>人生昧旅，砥砺而行</description>
-    <pubDate>Tue, 16 May 2023 05:14:02 GMT</pubDate>
+    <pubDate>Thu, 25 May 2023 00:51:44 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>数据结构</title>
+      <link>http://example.com/2023/05/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <guid>http://example.com/2023/05/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <pubDate>Thu, 25 May 2023 00:35:13 GMT</pubDate>
+      
+        
+        
+      <description>&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算法 + 数据结构 = 程序</span><br></pre></td></tr></table></figure><h1 id="一、简述"><a href="#一、简述" class="headerlink" title="一、简述"></a>一、简述</h1><p>1️⃣数据结构<br>数据结构是指相互之间存在一种或多种特定关系的数据元素的集合，是计算机存储、组织数据的方式。再简单描述一下：数据结构就是描述对象间逻辑关系的学科。8 种常用数据结构：数组、<a href="https://www.jianshu.com/p/3aa144ac4c3b">链表</a>、栈、队列、图、<a href="https://www.jianshu.com/p/b597aa97c9de">树</a>、前缀树、<a href="https://blog.csdn.net/ChineseSoftware/article/details/117046998?spm=1001.2014.3001.5501">哈希表</a>。</p><p>2️⃣数据存储结构<br>简单的讲就是数据在计算机中的存储方式。常用的数据存储方式有两种：顺序存储，非顺序存储。顺序存储就是把数据存储在一块连续的存储介质(硬盘或内存等)中，反之就是非顺序存储。Java 中的数组就是典型的顺序存储，链表就是非顺序存储。数组存储数据时会开辟出一块连续内存，按顺序存储。链表则是只需要知道下一个节点存储的位置，就能把所有的数据连起来了。所以单向链表的最后一个节点是指向 Null 的。</p><h1 id="二、数组-Array"><a href="#二、数组-Array" class="headerlink" title="二、数组(Array)"></a>二、数组(Array)</h1><p>数组是数据结构中最简单，也是最常用的结构，很多编程语言都内置数组。其他数据结构，比如栈和队列都是由数组衍生出来的。下图展示了 1 个数组，它有 4 个元素。每一个数组元素的位置由数字编号，称为下标或者索引(index)。大多数编程语言的数组第一个元素的下标是 0。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/20943d05b4e76a7e44aab517063ad3ce.png" alt="img"></p><p>根据维度区分，有两种不同的数组：</p><p>1️⃣一维数组(如上图所示)<br>2️⃣多维数组(数组的元素为数组)</p><p>在 Java 中当创建数组时会在内存中划分出一块连续的内存，然后当有数据进入的时候会将数据按顺序的存储在这块连续的内存中。当需要读取数组中的数据时，需要提供数组中的索引，然后数组根据索引将内存中的数据取出来，返回给读取程序。在Java中并不是所有的数据都能存储到数组中，只有相同类型的数据才可以一起存储到数组中。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/3322e6f9ecae09bcb4a71a7865db5ac4.png" alt="img"></p><p>所有的数据结构都支持几个基本操作：读取Get、插入Insert、删除Delete。</p><p>因为数组在存储数据时是按顺序存储的，存储数据的内存也是连续的，所以它的特点就是寻址读取数据比较容易，插入和删除比较困难。在读取数据时，只需要告诉数组要从哪个位置(索引)取数据就可以了，数组会直接把想要的位置的数据取出来。插入和删除比较困难是因为这些存储数据的内存是连续的，要插入和删除就需要变更整个数组中的数据的位置。举个例子：一个数组中编号0-&gt;1-&gt;2-&gt;3-&gt;4这五个内存地址中都存了数组的数据，现在需要往4中插入一个数据，那就代表着从4开始，后面的所有内存中的数据都要往后移一个位置，相当耗时。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/f6ae1c03f195fbe7fa0493d5575d2f46.png" alt="img"></p><h1 id="三、链表-Linked-List-线性结构"><a href="#三、链表-Linked-List-线性结构" class="headerlink" title="三、链表(Linked List)线性结构"></a>三、链表(Linked List)线性结构</h1><p>链表与数组看起来非常像，但是内存分配方式、内部结构和插入删除操作方式都不一样。链表是一系列节点组成的链，每一个节点保存了数据以及指向下一个节点的指针。链表头指针指向第一个节点，如果链表为空，则头指针为空或者为 null。链表可以用来实现文件系统、哈希表和邻接表。</p><p>在 Java 中创建链表的过程和创建数组的过程不同，不会先划出一块连续的内存。因为链表中的数据并不是连续的，链表在存储数据的内存中有两块区域，一块区域用来存储数据，一块区域用来记录下一个数据保存在哪里(指向下一个数据的指针)。当有数据进入链表时候，会根据指针找到下一个存储数据的位置，然后把数据保存起来，然后再指向下一个存储数据的位置。这样链表就把一些碎片空间利用起来了，虽然链表是线性表，但是并不会按线性的顺序存储数据。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/9934f96665a90bb21682e40f238c53ce.png" alt="img"></p><p>由于链表是以这种方式保存数据，所以链表在插入和删除时比较容易，读取数据时比较麻烦。举个例子：一个链表中0-&gt;1-&gt;2-&gt;3-&gt;4这五个内存地址中都存了数据，现在需要往2中插入一条数据，那么只需要更改1号和2号中记录下一个数据的位置就行了，对其他数据没有影响。删除一条数据与插入类似，很高效。但是如果是想要在链表其中取出一条数据，就需要从0号开始一个一个的找，直到找到想要的那条数据为止。</p><p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/ebf9608a832871443668674c462cd4df.png" alt="链表中插入数据"></p><p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/f88d739e247fb434e0f9d86892d5626f.png" alt="链表中删除数据"></p><p>链表分为 2 种：</p><ul><li>单向链表</li><li>双向链表</li></ul><p><strong>链表的基本操作</strong></p><ul><li>InsertAtEnd — 在链表结尾插入元素</li><li>InsertAtHead — 在链表开头插入元素</li><li>Delete — 删除链表的指定元素</li><li>DeleteAtHead — 删除链表第一个元素</li><li>Search — 在链表中查询指定元素</li><li>isEmpty — 查询链表是否为空</li></ul><h1 id="四、栈-stack-LIFO"><a href="#四、栈-stack-LIFO" class="headerlink" title="四、栈(stack) LIFO"></a>四、栈(stack) LIFO</h1><p>栈是一种先进后出的数据结构，数组和链表都可以生成栈。当数据进入到栈时会按照规则压入到栈的底部，再次进入的数据会压在前一次的数据上面，以此类推。在取出栈中的数据的时候会先取出最上面的数据，所以是先进后出。<br><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/fcff4899650de4a7ad61ba4ce4cf6e58.png" alt="img"></p><p>由于数组和链表都可以组成栈，所以操作特点就需要看栈是由数组还是链表生成的了，然后就会继承相应的操作特点。最常见的操作撤回(Ctrl+Z)，就是利用栈实现的。原理：把之前的应用状态(限制个数)保存到内存中，最近的状态放到第一个。</p><p><strong>栈的基本操作</strong></p><ul><li>Push — 在栈的最上方插入元素</li><li>Pop — 返回栈最上方的元素，并将其删除</li><li>isEmpty — 查询栈是否为空</li><li>Top — 返回栈最上方的元素，并不删除</li></ul><h1 id="五、队列-Queue-FIFO"><a href="#五、队列-Queue-FIFO" class="headerlink" title="五、队列(Queue) FIFO"></a>五、队列(Queue) FIFO</h1><p>队列与栈类似，都是采用线性结构存储数据。它们的区别在于，栈采用 LIFO 方式，而队列采用先进先出，即 FIFO(First in First Out)。数组和链表也都可以生成队列。当数据进入到队列中时也是先进入的在下面后进入的在上面，但是出队列的时候是先从下面出，然后才是上面的数据出，最晚进入的队列的，最后出。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/86cbd80eb9063675fe5dad85f9441949.png" alt="img"></p><p>举个简单的例子：可以把栈和队列看成是两根管子，这两根管子是用来存储数据的，有可能是数组生成的也有可能是链表生成的，栈的这根管子有一头是封死的，所以像这个管子放数据只能从一个口进，拿出数据的时候也只能从这一个口拿出来。而队列这根管子呢两个口都是敞开的，一个口负责进数据，另一个口负责出数据，所以从一进口先进去的数据，在出口处会先被拿出来。</p><p><strong>队列的基本操作</strong></p><ul><li>Enqueue — 在队列末尾插入元素</li><li>Dequeue — 将队列第一个元素删除</li><li>isEmpty — 查询队列是否为空</li><li>Top — 返回队列的第一个元素</li></ul><h1 id="六、图-graph"><a href="#六、图-graph" class="headerlink" title="六、图(graph)"></a>六、图(graph)</h1><p>图由多个节点(vertex)构成，节点之间阔以互相连接组成一个网络。(x, y)表示一条边(edge)，它表示节点 x 与 y 相连。边可能会有权值(weight&#x2F;cost)。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/7194111aeb0dcda9b656ec5fc8778792.png" alt="img"></p><p>图分为两种:</p><ul><li>无向图</li><li>有向图</li></ul><p>在编程语言中，图有可能有以下两种形式表示：</p><ul><li>邻接矩阵(Adjacency Matrix)</li><li>邻接表(Adjacency List)</li></ul><p>遍历图有两周算法</p><ul><li>广度优先搜索(Breadth First Search)</li><li>深度优先搜索(Depth First Search)</li></ul><h1 id="七、树-Tree"><a href="#七、树-Tree" class="headerlink" title="七、树(Tree)"></a>七、树(Tree)</h1><p>树是一个分层的数据结构，由节点和连接节点的边组成。树是一种特殊的图，它与图最大的区别是没有循环。树被广泛应用在人工智能和一些复杂算法中，用来提供高效的存储结构。下图是一个简单的树以及与树相关的术语：<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/12f7c9865c45adea766198e88adfff38.png" alt="img"></p><p>树有很多分类：</p><ul><li>N 叉树(N-ary Tree)</li><li>平衡树(Balanced Tree)</li><li>二叉树(Binary Tree)</li><li>二叉查找树(Binary Search Tree)</li><li>平衡二叉树(AVL Tree)</li><li>红黑树(Red Black Tree)</li><li>2-3 树(2–3 Tree)</li></ul><p>其中，二叉树和二叉查找树是最常用的树。</p><h1 id="八、前缀树"><a href="#八、前缀树" class="headerlink" title="八、前缀树"></a>八、前缀树</h1><p>前缀树(Prefix Trees 或者 Trie)与树类似，用于处理字符串相关的问题时非常高效。它可以实现快速检索，常用于字典中的单词查询，搜索引擎的自动补全甚至 IP 路由。下图展示了“top”, “thus”和“their”三个单词在前缀树中如何存储的：<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/ce56c31d1ceafa91a39b7dc25436bcdb.png" alt="img"></p><p>单词是按照字母从上往下存储，“p”, “s”和“r”节点分别表示“top”, “thus”和“their”的单词结尾。</p><h1 id="九、哈希表-Hash"><a href="#九、哈希表-Hash" class="headerlink" title="九、哈希表(Hash)"></a>九、哈希表(Hash)</h1><p>哈希将某个对象变换为唯一标识符，该标识符通常用一个短的随机字母和数字组成的字符串来代表。哈希可以用来实现各种数据结构，其中最常用的就是哈希表(hash table)。哈希表通常由数组实现。哈希表的性能取决于 3 个指标：</p><ul><li>哈希函数</li><li>哈希表的大小</li><li>哈希冲突处理方式</li></ul><p>下图展示了有数组实现的哈希表，数组的下标即为哈希值，由哈希函数计算，作为哈希表的键(key)，而数组中保存的数据即为值(value)：<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/dc4341088f77e4378ee43855ad8bd661.png" alt="img"></p>]]></content:encoded>
+      
+      
+      <category domain="http://example.com/categories/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+      <category domain="http://example.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <comments>http://example.com/2023/05/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>海量数据处理</title>
+      <link>http://example.com/2023/05/24/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</link>
+      <guid>http://example.com/2023/05/24/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/</guid>
+      <pubDate>Wed, 24 May 2023 14:49:53 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;海量数据，是业务功能处理所涉及的数据量较大，不是指大数据的分析处理。&lt;br&gt;1：何谓海量数据&lt;br&gt;通俗地说，就是数据很多，数据量很大，记录数一般在千万级或者亿级甚至更多；存储在一个或多个服务器上；存储体量一般在TB级甚至PB级以上。&lt;br&gt;2：跟“大数据”的区别&lt;br&gt;“</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>海量数据，是业务功能处理所涉及的数据量较大，不是指大数据的分析处理。<br>1：何谓海量数据<br>通俗地说，就是数据很多，数据量很大，记录数一般在千万级或者亿级甚至更多；存储在一个或多个服务器上；存储体量一般在TB级甚至PB级以上。<br>2：跟“大数据”的区别<br>“大数据”通常指的是对海量数据进行分析和挖掘，发掘出数据中蕴含的有意义的东西，比如：规律、趋势、喜好等等，并能据此做出一定的推理和预测，通常会涉及数据仓库、数据挖掘、人工智能等方面的东西。<br>这个是我们所说的大数据技术、大数据开发、大数据系统。</p><p>海量数据的处理思路<br>核心思想：分而治之——拆分数据。<br>就是尽量让每次请求处理，所要操作的数据量变小。</p><p>基本的方法有这么几种：<br>1：数据库优化<br>比如：建立索引、 使用视图、优化SQL 等等。<br>2：垂直分库分表<br>如果说一次业务操作涉及到多张表，或者是单表的某些属性的时候，可以考虑垂直分库分表。<br>比如按业务分成商品库、用户库、订单库、库存库等等的。用户库还可以进一步划分成用户基本信息库、用户扩展信息库、用户积分等级库等等的。<br>3：水平分库分表<br>这个主要就是水平分表，本质上是数据分片。<br>把数据量过大的单表，根据一定的业务规则，拆分成多个表，每个表里面的数据就降下来了。<br>比如本来有1个亿的数据，现在拆分成了20张表，每张表大概也就是500万数据了。<br>也就是一次业务操作，可能需要操作的数据量也就降下来了。<br>4：合理使用缓存<br>一般情况下，只要不涉及到数据的修改，应该尽量从缓存系统去获取数据。这能大大减轻数据库的压力，对于提高系统的性能有很大的帮助。</p>]]></content:encoded>
+      
+      
+      <category domain="http://example.com/categories/%E9%9D%A2%E8%AF%95/">面试</category>
+      
+      
+      <category domain="http://example.com/tags/SQL%EF%BC%8C%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">SQL，性能优化</category>
+      
+      
+      <comments>http://example.com/2023/05/24/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>CSharp多线程</title>
+      <link>http://example.com/2023/05/18/CSharp%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+      <guid>http://example.com/2023/05/18/CSharp%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+      <pubDate>Thu, 18 May 2023 04:08:11 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;1 进程、线程、同步、异步的概念&lt;br&gt;2 回顾委托，开始异步&lt;br&gt;3 异步多线程的三大特点&lt;/p&gt;
+&lt;p&gt;进程：程序在服务器上运行时，占据的计算资源合集(内存，CPU，状态等)，称之为进程。进程之间不会相互干扰–进程间的通信会比较困难(用分布式实现)&lt;/p&gt;
+&lt;p&gt;线程</description>
+        
+      
+      
+      
+      <content:encoded><![CDATA[<p>1 进程、线程、同步、异步的概念<br>2 回顾委托，开始异步<br>3 异步多线程的三大特点</p><p>进程：程序在服务器上运行时，占据的计算资源合集(内存，CPU，状态等)，称之为进程。进程之间不会相互干扰–进程间的通信会比较困难(用分布式实现)</p><p>线程：程序执行的最小单位，即响应操作的最小执行流。线程也包含自己的计算资源，线程依托于进程，一个进程可以有多个线程。</p><p>多线程：一个进程里有多个线程并发执行。多线程是Thread类，就是一个封装类，是.Net Framework对线程对象的抽象封装。通过Thread去完成的操作，最终是通过向操作系统请求得到的执行流。</p><p>CurrentThread：当前线程——任何操作执行都是线程完成的，运行当前这句话的线程<br>ManagedThread:是.Net平台给Thread起的名字，就是个int值，尽量不重复</p><p>同步单线程方法：按顺序执行，每次调用完成后才能执行下一行，是同一个线程运行的<br>异步多线程方法：</p>]]></content:encoded>
+      
+      
+      <category domain="http://example.com/categories/C/">C#</category>
+      
+      
+      <category domain="http://example.com/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</category>
+      
+      
+      <comments>http://example.com/2023/05/18/CSharp%E5%A4%9A%E7%BA%BF%E7%A8%8B/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>如何理解自己内心</title>
@@ -208,94 +288,6 @@
       
       
       <comments>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFDApp/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>什么是tiga</title>
-      <link>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFtiga/</link>
-      <guid>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFtiga/</guid>
-      <pubDate>Tue, 09 May 2023 18:48:16 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;tiga是一个加密货币行情和资讯应用,包含加密货币实时行情,新闻资讯,交易所数据等内容。其网址是[tiga.io]。&lt;br&gt;tiga应用具有以下主要功能:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;实时行情 - 提供主流加密货币如BTC、ETH、XRP、LTC等的实时行情数据,包括价格走势</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>tiga是一个加密货币行情和资讯应用,包含加密货币实时行情,新闻资讯,交易所数据等内容。其网址是[tiga.io]。<br>tiga应用具有以下主要功能:</p><ol><li>实时行情 - 提供主流加密货币如BTC、ETH、XRP、LTC等的实时行情数据,包括价格走势图、最新成交价、24小时价格变化等,让您实时掌握数字货币市场动态。</li><li>资讯聚合 - 汇集多家加密货币媒体的新闻资讯,包含行业新闻、投资分析、专家观点等内容。通过资讯聚合,可以全面跟踪行业热点与动态,有助于投资决策。</li><li>交易数据 - 显示全球主要加密货币交易所的交易数据,如交易量、行情图表、限价单薄等。让您了解每家交易所的具体行情与动态,选择最佳的交易平台。 </li><li>行业报告 - 发布加密货币相关的调研报告、数据报告与投资报告。提供专业的数据与分析见解,助您深入了解行业现状和未来发展趋势。</li><li>工具组件 - 提供加密货币实用工具,如行情提醒、交易记录管理、资产估值等。这些工具可直接使用,方便加密货币投资者日常管理与决策。</li><li>开发者接口 - 对外提供REST API和WebSocket接口,供开发者调用加密货币行情、交易数据与工具等。有助于其他应用与服务接入加密货币相关内容。<br>所以,tiga是一个专注于加密货币市场数据与资讯的综合性应用平台。通过实时行情、新闻资讯、行业报告等内容,它可以帮助投资者全面掌握加密货币最新动态,做出理性决策。同时,它也通过开放接口为其他应用提供数据支撑。<br>如果您需要实时了解加密货币行情与动态,利用tiga可以获得一个清晰全面的数据视角。除了网页版外,tiga也提供iOS和Android的移动应用,方便用户随时随地获取信息。对加密货币感兴趣的开发者,也可以利用其开放接口进行二次开发,开发出更丰富的应用与服务</li></ol>]]></content:encoded>
-      
-      
-      <category domain="http://example.com/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</category>
-      
-      
-      <category domain="http://example.com/tags/%E7%A7%91%E6%99%AE/">科普</category>
-      
-      <category domain="http://example.com/tags/tiga/">tiga</category>
-      
-      
-      <comments>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFtiga/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>什么是BNB</title>
-      <link>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFBNB/</link>
-      <guid>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFBNB/</guid>
-      <pubDate>Tue, 09 May 2023 18:47:12 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;BNB是币安(Binance)交易平台的原生加密货币,全称为Binance Coin。它由币安发行,在币安交易平台上有重要的作用和应用。&lt;br&gt;BNB的主要功能包括:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;交易抵扣 - 在币安交易平台上,用户可以使用BNB抵扣部分交易手续费。每笔交易的</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>BNB是币安(Binance)交易平台的原生加密货币,全称为Binance Coin。它由币安发行,在币安交易平台上有重要的作用和应用。<br>BNB的主要功能包括:</p><ol><li>交易抵扣 - 在币安交易平台上,用户可以使用BNB抵扣部分交易手续费。每笔交易的手续费为0.1%,如果使用BNB支付可以抵扣25-50%的费用。这可以降低交易成本,提高用户体验。</li><li>交易结算 - BNB支持直接与150多种加密货币交易,可以作为加密资产之间交易的媒介和结算工具。这增加了BNB的流动性与实用性。</li><li>创新应用 - BNB还支持某些创新数字金融应用,如借贷市场、法币交易、矿池服务等。通过扩展BNB的应用场景,可以增加其价值和影响力。</li><li>进行ICO - 在币安ICO平台发行新代币的项目可以选择接受BNB作为认购资金。这也会推高BNB的需求与价格。</li><li>投票权利 - 持有BNB可以参与币安平台的某些社区治理活动与投票。这在一定程度上体现了BNB持有者的权益。</li><li>资产升值 - 随着币安交易平台的发展与壮大,BNB可以实现价值增值。这对BNB持有者来说也是一种投资回报。<br>所以,BNB是币安交易平台的基于区块链的平台代币。通过在币安内具有重要的应用与功能,BNB可以发挥作价值传输、交易媒介、费用结算等作用,这决定了它在币安生态中的重要地位。<br>与其他加密货币相比,BNB更加实用,且与强大的交易平台币安紧密绑定。所以,BNB的未来发展在很大程度上依赖于币安交易平台的影响力与规模。如果币安继续保持行业领先,BNB也会随之实现长期的升值与增长。<br>对于用户和投资者来说,BNB是参与币安生态的一种重要 choices。您可以通过其现有的各种功能与应用获益,也可以基于其长期升值预期进行投资配置。但同时也需要注意到,BNB依赖币安平台,存在一定的系统性风险。</li></ol>]]></content:encoded>
-      
-      
-      <category domain="http://example.com/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</category>
-      
-      
-      <category domain="http://example.com/tags/%E7%A7%91%E6%99%AE/">科普</category>
-      
-      <category domain="http://example.com/tags/%E5%90%8D%E8%AF%8D%E9%87%8A%E4%B9%89/">名词释义</category>
-      
-      
-      <comments>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFBNB/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>什么是USTD</title>
-      <link>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFUSTD/</link>
-      <guid>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFUSTD/</guid>
-      <pubDate>Tue, 09 May 2023 18:21:20 GMT</pubDate>
-      
-        
-        
-      <description>&lt;p&gt;泰达币（USDT）是一种将加密货币与法定货币美元挂钩的虚拟货币。&lt;br&gt;USDT是Tether发行的稳定币,全称为Tether USD。它是与美元挂钩的加密货币,意在提供比特币等数字资产与法定货币之间的桥梁。USDT的市值目前超过600亿美元,是最流行和最大的稳定币。&lt;br</description>
-        
-      
-      
-      
-      <content:encoded><![CDATA[<p>泰达币（USDT）是一种将加密货币与法定货币美元挂钩的虚拟货币。<br>USDT是Tether发行的稳定币,全称为Tether USD。它是与美元挂钩的加密货币,意在提供比特币等数字资产与法定货币之间的桥梁。USDT的市值目前超过600亿美元,是最流行和最大的稳定币。<br>USDT具有以下主要特征:</p><ol><li>与美元等值 - USDT的发行是为了与美元保持1:1的等值,所以每一USDT代币价值1美元。这使其可以作为数字资产和法定货币的中间媒介。</li><li>区块链资产 - USDT发行于比特币、以太坊、EOS、 liquid等公链之上,是基于区块链的数字资产。但与其他加密资产不同,USDT代币数与资产价值等量挂钩。 </li><li>交易和支付 - USDT代币可以在加密货币交易所和钱包之间自由转移,用来交易和支付其他数字资产。这为加密货币提供了稳定的计价单位和交易手段。</li><li>链下兑换 - 持有USDT的用户可以通过Tether平台将其兑换为等值的美元。这种链下兑换机制可确保USDT代币与美元之间的等价性,从而达到价格稳定的目的。</li><li>风险存在 - 由于USDT是由私人公司发行和管理,其与美元等值的承诺存在不确定性。如果Tether公司出现问题,USDT价格可能会偏离1美元,甚至出现暴跌。这种风险一直是人们关注和质疑USDT的主要原因。<br>总的来说,USDT提供了一种方便兑换数字资产和法定货币的方式,在一定程度上促进了加密货币市场的流动性。但作为一种私人发行的稳定币, USDT也面临着发行公司的风险与监管不确定性等问题。这使得USDT的前景具有一定变量,未来发展仍需密切关注。<br>USDT已经成为数字资产市场不可或缺的一部分,但私人发行的稳定币最终是否会被央行发行的CBDC取代,还是个未知数。这将在很大程度上决定USDT等私人稳定币的未来命运。</li></ol>]]></content:encoded>
-      
-      
-      <category domain="http://example.com/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</category>
-      
-      
-      <category domain="http://example.com/tags/%E7%A7%91%E6%99%AE/">科普</category>
-      
-      <category domain="http://example.com/tags/USTD/">USTD</category>
-      
-      
-      <comments>http://example.com/2023/05/10/%E4%BB%80%E4%B9%88%E6%98%AFUSTD/#disqus_thread</comments>
       
     </item>
     

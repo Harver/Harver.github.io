@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1算法 + 数据结构 &#x3D; 程序  一、简述1️⃣数据结构数据结构是指相互之间存在一种或多种特定关系的数据元素的集合，是计算机存储、组织数据的方式。再简单描述一下：数据结构就是描述对象间逻辑关系的学科。8 种常用数据结构：数组、链表、栈、队列、图、树、前缀树、哈希表。 2️⃣数据存储结构简单的讲就是数据在计算机中的存储方式。常用的数据存储方式有两种：顺序存储，非顺序存储。顺序存储就是把数据存储在一块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="http://example.com/2023/05/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="小子有出息">
+<meta property="og:description" content="1算法 + 数据结构 &#x3D; 程序  一、简述1️⃣数据结构数据结构是指相互之间存在一种或多种特定关系的数据元素的集合，是计算机存储、组织数据的方式。再简单描述一下：数据结构就是描述对象间逻辑关系的学科。8 种常用数据结构：数组、链表、栈、队列、图、树、前缀树、哈希表。 2️⃣数据存储结构简单的讲就是数据在计算机中的存储方式。常用的数据存储方式有两种：顺序存储，非顺序存储。顺序存储就是把数据存储在一块">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/20943d05b4e76a7e44aab517063ad3ce.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/3322e6f9ecae09bcb4a71a7865db5ac4.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/f6ae1c03f195fbe7fa0493d5575d2f46.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/9934f96665a90bb21682e40f238c53ce.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/ebf9608a832871443668674c462cd4df.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/f88d739e247fb434e0f9d86892d5626f.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/fcff4899650de4a7ad61ba4ce4cf6e58.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/86cbd80eb9063675fe5dad85f9441949.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/7194111aeb0dcda9b656ec5fc8778792.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/12f7c9865c45adea766198e88adfff38.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/ce56c31d1ceafa91a39b7dc25436bcdb.png">
+<meta property="og:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/dc4341088f77e4378ee43855ad8bd661.png">
+<meta property="article:published_time" content="2023-05-25T00:35:13.000Z">
+<meta property="article:modified_time" content="2023-05-25T00:51:44.561Z">
+<meta property="article:author" content="小子有出息">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/20943d05b4e76a7e44aab517063ad3ce.png">
+
+<link rel="canonical" href="http://example.com/2023/05/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据结构 | 小子有出息</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/rss2.xml" title="小子有出息" type="application/rss+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小子有出息</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-resources">
+
+    <a href="/resources/" rel="section"><i class="fa fa-book fa-fw"></i>资源</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/05/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="小子有出息">
+      <meta itemprop="description" content="人生昧旅，砥砺而行">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小子有出息">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构
+        </h1>
+
+        <div class="post-meta">
+
+	    
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-05-25 08:35:13 / 修改时间：08:51:44" itemprop="dateCreated datePublished" datetime="2023-05-25T08:35:13+08:00">2023-05-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9D%A2%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">面试</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">算法 + 数据结构 = 程序</span><br></pre></td></tr></table></figure>
+
+<h1 id="一、简述"><a href="#一、简述" class="headerlink" title="一、简述"></a>一、简述</h1><p>1️⃣数据结构<br>数据结构是指相互之间存在一种或多种特定关系的数据元素的集合，是计算机存储、组织数据的方式。再简单描述一下：数据结构就是描述对象间逻辑关系的学科。8 种常用数据结构：数组、<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3aa144ac4c3b">链表</a>、栈、队列、图、<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b597aa97c9de">树</a>、前缀树、<a target="_blank" rel="noopener" href="https://blog.csdn.net/ChineseSoftware/article/details/117046998?spm=1001.2014.3001.5501">哈希表</a>。</p>
+<p>2️⃣数据存储结构<br>简单的讲就是数据在计算机中的存储方式。常用的数据存储方式有两种：顺序存储，非顺序存储。顺序存储就是把数据存储在一块连续的存储介质(硬盘或内存等)中，反之就是非顺序存储。Java 中的数组就是典型的顺序存储，链表就是非顺序存储。数组存储数据时会开辟出一块连续内存，按顺序存储。链表则是只需要知道下一个节点存储的位置，就能把所有的数据连起来了。所以单向链表的最后一个节点是指向 Null 的。</p>
+<h1 id="二、数组-Array"><a href="#二、数组-Array" class="headerlink" title="二、数组(Array)"></a>二、数组(Array)</h1><p>数组是数据结构中最简单，也是最常用的结构，很多编程语言都内置数组。其他数据结构，比如栈和队列都是由数组衍生出来的。下图展示了 1 个数组，它有 4 个元素。每一个数组元素的位置由数字编号，称为下标或者索引(index)。大多数编程语言的数组第一个元素的下标是 0。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/20943d05b4e76a7e44aab517063ad3ce.png" alt="img"></p>
+<p>根据维度区分，有两种不同的数组：</p>
+<p>1️⃣一维数组(如上图所示)<br>2️⃣多维数组(数组的元素为数组)</p>
+<p>在 Java 中当创建数组时会在内存中划分出一块连续的内存，然后当有数据进入的时候会将数据按顺序的存储在这块连续的内存中。当需要读取数组中的数据时，需要提供数组中的索引，然后数组根据索引将内存中的数据取出来，返回给读取程序。在Java中并不是所有的数据都能存储到数组中，只有相同类型的数据才可以一起存储到数组中。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/3322e6f9ecae09bcb4a71a7865db5ac4.png" alt="img"></p>
+<p>所有的数据结构都支持几个基本操作：读取Get、插入Insert、删除Delete。</p>
+<p>因为数组在存储数据时是按顺序存储的，存储数据的内存也是连续的，所以它的特点就是寻址读取数据比较容易，插入和删除比较困难。在读取数据时，只需要告诉数组要从哪个位置(索引)取数据就可以了，数组会直接把想要的位置的数据取出来。插入和删除比较困难是因为这些存储数据的内存是连续的，要插入和删除就需要变更整个数组中的数据的位置。举个例子：一个数组中编号0-&gt;1-&gt;2-&gt;3-&gt;4这五个内存地址中都存了数组的数据，现在需要往4中插入一个数据，那就代表着从4开始，后面的所有内存中的数据都要往后移一个位置，相当耗时。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/f6ae1c03f195fbe7fa0493d5575d2f46.png" alt="img"></p>
+<h1 id="三、链表-Linked-List-线性结构"><a href="#三、链表-Linked-List-线性结构" class="headerlink" title="三、链表(Linked List)线性结构"></a>三、链表(Linked List)线性结构</h1><p>链表与数组看起来非常像，但是内存分配方式、内部结构和插入删除操作方式都不一样。链表是一系列节点组成的链，每一个节点保存了数据以及指向下一个节点的指针。链表头指针指向第一个节点，如果链表为空，则头指针为空或者为 null。链表可以用来实现文件系统、哈希表和邻接表。</p>
+<p>在 Java 中创建链表的过程和创建数组的过程不同，不会先划出一块连续的内存。因为链表中的数据并不是连续的，链表在存储数据的内存中有两块区域，一块区域用来存储数据，一块区域用来记录下一个数据保存在哪里(指向下一个数据的指针)。当有数据进入链表时候，会根据指针找到下一个存储数据的位置，然后把数据保存起来，然后再指向下一个存储数据的位置。这样链表就把一些碎片空间利用起来了，虽然链表是线性表，但是并不会按线性的顺序存储数据。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/9934f96665a90bb21682e40f238c53ce.png" alt="img"></p>
+<p>由于链表是以这种方式保存数据，所以链表在插入和删除时比较容易，读取数据时比较麻烦。举个例子：一个链表中0-&gt;1-&gt;2-&gt;3-&gt;4这五个内存地址中都存了数据，现在需要往2中插入一条数据，那么只需要更改1号和2号中记录下一个数据的位置就行了，对其他数据没有影响。删除一条数据与插入类似，很高效。但是如果是想要在链表其中取出一条数据，就需要从0号开始一个一个的找，直到找到想要的那条数据为止。</p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/ebf9608a832871443668674c462cd4df.png" alt="链表中插入数据"></p>
+<p><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/f88d739e247fb434e0f9d86892d5626f.png" alt="链表中删除数据"></p>
+<p>链表分为 2 种：</p>
+<ul>
+<li>单向链表</li>
+<li>双向链表</li>
+</ul>
+<p><strong>链表的基本操作</strong></p>
+<ul>
+<li>InsertAtEnd — 在链表结尾插入元素</li>
+<li>InsertAtHead — 在链表开头插入元素</li>
+<li>Delete — 删除链表的指定元素</li>
+<li>DeleteAtHead — 删除链表第一个元素</li>
+<li>Search — 在链表中查询指定元素</li>
+<li>isEmpty — 查询链表是否为空</li>
+</ul>
+<h1 id="四、栈-stack-LIFO"><a href="#四、栈-stack-LIFO" class="headerlink" title="四、栈(stack) LIFO"></a>四、栈(stack) LIFO</h1><p>栈是一种先进后出的数据结构，数组和链表都可以生成栈。当数据进入到栈时会按照规则压入到栈的底部，再次进入的数据会压在前一次的数据上面，以此类推。在取出栈中的数据的时候会先取出最上面的数据，所以是先进后出。<br><img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/fcff4899650de4a7ad61ba4ce4cf6e58.png" alt="img"></p>
+<p>由于数组和链表都可以组成栈，所以操作特点就需要看栈是由数组还是链表生成的了，然后就会继承相应的操作特点。最常见的操作撤回(Ctrl+Z)，就是利用栈实现的。原理：把之前的应用状态(限制个数)保存到内存中，最近的状态放到第一个。</p>
+<p><strong>栈的基本操作</strong></p>
+<ul>
+<li>Push — 在栈的最上方插入元素</li>
+<li>Pop — 返回栈最上方的元素，并将其删除</li>
+<li>isEmpty — 查询栈是否为空</li>
+<li>Top — 返回栈最上方的元素，并不删除</li>
+</ul>
+<h1 id="五、队列-Queue-FIFO"><a href="#五、队列-Queue-FIFO" class="headerlink" title="五、队列(Queue) FIFO"></a>五、队列(Queue) FIFO</h1><p>队列与栈类似，都是采用线性结构存储数据。它们的区别在于，栈采用 LIFO 方式，而队列采用先进先出，即 FIFO(First in First Out)。数组和链表也都可以生成队列。当数据进入到队列中时也是先进入的在下面后进入的在上面，但是出队列的时候是先从下面出，然后才是上面的数据出，最晚进入的队列的，最后出。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/86cbd80eb9063675fe5dad85f9441949.png" alt="img"></p>
+<p>举个简单的例子：可以把栈和队列看成是两根管子，这两根管子是用来存储数据的，有可能是数组生成的也有可能是链表生成的，栈的这根管子有一头是封死的，所以像这个管子放数据只能从一个口进，拿出数据的时候也只能从这一个口拿出来。而队列这根管子呢两个口都是敞开的，一个口负责进数据，另一个口负责出数据，所以从一进口先进去的数据，在出口处会先被拿出来。</p>
+<p><strong>队列的基本操作</strong></p>
+<ul>
+<li>Enqueue — 在队列末尾插入元素</li>
+<li>Dequeue — 将队列第一个元素删除</li>
+<li>isEmpty — 查询队列是否为空</li>
+<li>Top — 返回队列的第一个元素</li>
+</ul>
+<h1 id="六、图-graph"><a href="#六、图-graph" class="headerlink" title="六、图(graph)"></a>六、图(graph)</h1><p>图由多个节点(vertex)构成，节点之间阔以互相连接组成一个网络。(x, y)表示一条边(edge)，它表示节点 x 与 y 相连。边可能会有权值(weight&#x2F;cost)。<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/7194111aeb0dcda9b656ec5fc8778792.png" alt="img"></p>
+<p>图分为两种:</p>
+<ul>
+<li>无向图</li>
+<li>有向图</li>
+</ul>
+<p>在编程语言中，图有可能有以下两种形式表示：</p>
+<ul>
+<li>邻接矩阵(Adjacency Matrix)</li>
+<li>邻接表(Adjacency List)</li>
+</ul>
+<p>遍历图有两周算法</p>
+<ul>
+<li>广度优先搜索(Breadth First Search)</li>
+<li>深度优先搜索(Depth First Search)</li>
+</ul>
+<h1 id="七、树-Tree"><a href="#七、树-Tree" class="headerlink" title="七、树(Tree)"></a>七、树(Tree)</h1><p>树是一个分层的数据结构，由节点和连接节点的边组成。树是一种特殊的图，它与图最大的区别是没有循环。树被广泛应用在人工智能和一些复杂算法中，用来提供高效的存储结构。下图是一个简单的树以及与树相关的术语：<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/12f7c9865c45adea766198e88adfff38.png" alt="img"></p>
+<p>树有很多分类：</p>
+<ul>
+<li>N 叉树(N-ary Tree)</li>
+<li>平衡树(Balanced Tree)</li>
+<li>二叉树(Binary Tree)</li>
+<li>二叉查找树(Binary Search Tree)</li>
+<li>平衡二叉树(AVL Tree)</li>
+<li>红黑树(Red Black Tree)</li>
+<li>2-3 树(2–3 Tree)</li>
+</ul>
+<p>其中，二叉树和二叉查找树是最常用的树。</p>
+<h1 id="八、前缀树"><a href="#八、前缀树" class="headerlink" title="八、前缀树"></a>八、前缀树</h1><p>前缀树(Prefix Trees 或者 Trie)与树类似，用于处理字符串相关的问题时非常高效。它可以实现快速检索，常用于字典中的单词查询，搜索引擎的自动补全甚至 IP 路由。下图展示了“top”, “thus”和“their”三个单词在前缀树中如何存储的：<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/ce56c31d1ceafa91a39b7dc25436bcdb.png" alt="img"></p>
+<p>单词是按照字母从上往下存储，“p”, “s”和“r”节点分别表示“top”, “thus”和“their”的单词结尾。</p>
+<h1 id="九、哈希表-Hash"><a href="#九、哈希表-Hash" class="headerlink" title="九、哈希表(Hash)"></a>九、哈希表(Hash)</h1><p>哈希将某个对象变换为唯一标识符，该标识符通常用一个短的随机字母和数字组成的字符串来代表。哈希可以用来实现各种数据结构，其中最常用的就是哈希表(hash table)。哈希表通常由数组实现。哈希表的性能取决于 3 个指标：</p>
+<ul>
+<li>哈希函数</li>
+<li>哈希表的大小</li>
+<li>哈希冲突处理方式</li>
+</ul>
+<p>下图展示了有数组实现的哈希表，数组的下标即为哈希值，由哈希函数计算，作为哈希表的键(key)，而数组中保存的数据即为值(value)：<img src="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/img/dc4341088f77e4378ee43855ad8bd661.png" alt="img"></p>
+
+    </div>
+
+    
+    
+    
+
+    
+      <div>
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:24px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      </div>
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>小子有出息
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2023/05/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="数据结构">http://example.com/2023/05/25/数据结构/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/05/24/%E6%B5%B7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" rel="prev" title="海量数据处理">
+      <i class="fa fa-chevron-left"></i> 海量数据处理
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81ODQxMC8zNDg3Mw=="></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">一、简述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%95%B0%E7%BB%84-Array"><span class="nav-number">2.</span> <span class="nav-text">二、数组(Array)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%93%BE%E8%A1%A8-Linked-List-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84"><span class="nav-number">3.</span> <span class="nav-text">三、链表(Linked List)线性结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E6%A0%88-stack-LIFO"><span class="nav-number">4.</span> <span class="nav-text">四、栈(stack) LIFO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%98%9F%E5%88%97-Queue-FIFO"><span class="nav-number">5.</span> <span class="nav-text">五、队列(Queue) FIFO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%9B%BE-graph"><span class="nav-number">6.</span> <span class="nav-text">六、图(graph)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%A0%91-Tree"><span class="nav-number">7.</span> <span class="nav-text">七、树(Tree)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%89%8D%E7%BC%80%E6%A0%91"><span class="nav-number">8.</span> <span class="nav-text">八、前缀树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E5%93%88%E5%B8%8C%E8%A1%A8-Hash"><span class="nav-number">9.</span> <span class="nav-text">九、哈希表(Hash)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="小子有出息"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">小子有出息</p>
+  <div class="site-description" itemprop="description">人生昧旅，砥砺而行</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-04 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">小子有出息</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">20k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">19 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共16.8k字</span>
+</div>
+
+
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="busuanzi_container_site_pv">总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    <span class="post-meta-divider">|</span>
+    <span id="busuanzi_container_site_uv">总访客数<span id="busuanzi_value_site_uv"></span>人</span>
+    <span class="post-meta-divider">|</span>
+<!-- 不蒜子计数初始值纠正 -->
+<script>
+$(document).ready(function() {
+
+    var int = setInterval(fixCount, 50);  // 50ms周期检测函数
+    var countOffset = 20000;  // 初始化首次数据
+
+    function fixCount() {            
+       if (document.getElementById("busuanzi_container_site_pv").style.display != "none")
+        {
+            $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + countOffset); 
+            clearInterval(int);
+        }                  
+        if ($("#busuanzi_container_site_pv").css("display") != "none")
+        {
+            $("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + countOffset); // 加上初始数据 
+            clearInterval(int); // 停止检测
+        }  
+    }
+       	
+});
+</script> 
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+<script>
+NexT.utils.loadComments(document.querySelector('#lv-container'), () => {
+  window.livereOptions = {
+    refer: location.pathname.replace(CONFIG.root, '').replace('index.html', '')
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+</body>
+</html>
